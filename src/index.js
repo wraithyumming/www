@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
+
 
 // Использование React.createElement для создания элемента
 // ReactDOM.render(React.createElement('input', {
@@ -14,8 +15,15 @@ const mouseOver = () => console.log("Mouse Over");
 
 const helpText = "Help text";
 
-const elements = (
-    <div className="name">
+function Header () {
+    return (
+        <header>Шапка сайта</header>
+    )
+}
+
+function App() {
+    return (<div className="name">
+        <Header />
         <h1>{helpText}</h1>
         <input
             placeholder={helpText}
@@ -23,9 +31,9 @@ const elements = (
             onMouseEnter={mouseOver}
         />
         <p>{helpText === "Help text!" ? "Yes" : "No"}</p>
-    </div>
-);
+    </div>)
+}
 
-const app = document.getElementById("app");
+const app = ReactDOMClient.createRoot(document.getElementById("app"))
 
-ReactDOM.render(elements, app);
+app.render(<App />)
