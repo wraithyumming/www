@@ -15,13 +15,16 @@ const mouseOver = () => console.log("Mouse Over");
 
 const helpText = "Help text";
 
-function Header () {
-    return (
-        <header>Шапка сайта</header>
-    )
+class App extends React.Component {
+    render() {
+        return (
+            <header>Шапка сайта</header>
+        )
+    }
 }
 
-function App() {
+class App extends React.Component {
+    render() {
     return (<div className="name">
         <Header />
         <h1>{helpText}</h1>
@@ -32,7 +35,7 @@ function App() {
         />
         <p>{helpText === "Help text!" ? "Yes" : "No"}</p>
     </div>)
-}
+}}
 
 const app = ReactDOMClient.createRoot(document.getElementById("app"))
 
