@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from './components/Header';
+import Image from './components/Image';
+import Logo from './img/34.jpg'
 
 class App extends React.Component {
     helpText = "Help text";
@@ -13,9 +15,11 @@ class App extends React.Component {
                 onMouseEnter={this.mouseOver}
             />
             <p>{this.helpText === "Help text!" ? "Yes" : "No"}</p>
+            <Image image={Logo} alt="" />
+            <img src={Logo} />
         </div>)
     }
-    
+
     inputClick() { console.log("Clicked") }
     mouseOver() { console.log("Mouse Over") }
 }
