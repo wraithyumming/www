@@ -1,30 +1,47 @@
-import React from 'react'
+import React from 'react';
 import Header from './components/Header';
 import Image from './components/Image';
-import Logo from './img/34.jpg'
+import logo from './img/34.jpg';
 
 class App extends React.Component {
-    helpText = "Help text";
-    render() {
-        return (<div className="name">
-            <Header title="Шапка сайта" name="" />
-            <h1>{this.helpText}</h1>
-            <input
-                placeholder={this.helpText}
-                onClick={this.inputClick}
-                onMouseEnter={this.mouseOver}
-            />
-            <p>{this.helpText === "Help text!" ? "Yes" : "No"}</p>
-            <Image image={Logo} alt="" />
-            <img src={Logo} />
-        </div>)
+    constructor(props) {
+        super(props);
+        this.state = {
+            helpText: "Help text",
+            userData: "",
+        };
+
+        this.inputClick = this.inputClick.bind(this);
+        this.mouseOver = this.mouseOver.bind(this); // Не забудьте привязать этот метод, если вы его используете
     }
 
-    inputClick() { 
-        this.helpText = "Changed"
-        console.log("Clicked") 
+    render() {
+        return (
+            <div className="name">
+                <Header title="Шапка сайта" name="" />
+                <h1>{this.state.helpText}</h1>
+                <h2>{this.state.userData}</h2>
+                <input
+                    placeholder={this.state.helpText}
+                    onChange={event => this.setState({ userData: event.target.value })}
+                    onClick={this.inputClick}
+                    onMouseEnter={this.mouseOver}
+                />
+                <p>{this.state.helpText === "Help text!" ? "Yes" : "No"}</p>
+                <Image image={logo} />
+                <img src={logo} alt="logo" />
+            </div>
+        );
     }
-    mouseOver() { console.log("Mouse Over") }
+
+    inputClick() {
+        this.setState({ helpText: "Changed" }); // Исправлено: используйте setState как функцию
+        console.log("Clicked");
+    }
+
+    mouseOver() {
+        console.log("Mouse Over");
+    }
 }
 
-export default App
+export default App;
