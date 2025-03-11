@@ -20,7 +20,10 @@ class App extends React.Component {
         </div>)
     }
 
-    inputClick() { console.log("Clicked") }
+    inputClick() { 
+        this.helpText = "Changed"
+        console.log("Clicked") 
+    }
     mouseOver() { console.log("Mouse Over") }
 }
 
