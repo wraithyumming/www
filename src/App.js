@@ -12,7 +12,6 @@ class App extends React.Component {
         };
 
         this.inputClick = this.inputClick.bind(this);
-        this.mouseOver = this.mouseOver.bind(this); // Не забудьте привязать этот метод, если вы его используете
     }
 
     render() {
@@ -35,7 +34,7 @@ class App extends React.Component {
     }
 
     inputClick() {
-        this.setState({ helpText: "Changed" }); // Исправлено: используйте setState как функцию
+        this.setState({ helpText: "Changed" });
         console.log("Clicked");
     }
 
