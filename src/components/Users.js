@@ -25,6 +25,7 @@ class Users extends React.Component {
                 {this.users.map((el) => (<div className="user" key={el.id}>
                     <h3>{el.firstname} {el.lastname}</h3>
                     <p>{el.bio}</p>
+                    <b>{el.isHappy ? 'Счастлив!': 'Не особо:('}</b>
                 </div>))}
             </div>)
             else
