@@ -43,7 +43,8 @@ class App extends React.Component {
     }
 
     addUser(user) {
-        console.log(user)
+        const id= this.state.users.lenght + 1
+        this.setState({ users: [...this.state.users, {id, ...user}]})
     }
 
 }
