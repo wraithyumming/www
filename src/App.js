@@ -52,7 +52,7 @@ class App extends React.Component {
 
     editUser(user) {
         let allUsers = this.state.users
-        allUsers[user.id] = user
+        allUsers[user.id - 1] = user
     }
 
     addUser(user) {
