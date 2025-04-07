@@ -1,47 +1,43 @@
-import React from 'react';
+import React from 'react'
 
 class AddUser extends React.Component {
+    userAdd = {}
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             firstname: "",
             lastname: "",
             bio: "",
             age: 1,
             isHappy: false
-        };
+        }
     }
-
     render() {
         return (
-            <form ref={(el) => this.myForm = el} onSubmit={(e) => {
-                e.preventDefault();
-                this.props.onAdd({
-                    firstname: this.state.firstname,
-                    lastname: this.state.lastname,
-                    bio: this.state.bio,
-                    age: this.state.age,
-                    isHappy: this.state.isHappy
-                });
-                this.myForm.reset();
-                this.setState({
-                    firstname: "",
-                    lastname: "",
-                    bio: "",
-                    age: 1,
-                    isHappy: false
-                });
-            }}>
+            <form ref={(el) => this.myForm = el}>
                 <input placeholder='Имя' onChange={(e) => this.setState({ firstname: e.target.value })} />
                 <input placeholder='Фамилия' onChange={(e) => this.setState({ lastname: e.target.value })} />
                 <textarea placeholder='Биография' onChange={(e) => this.setState({ bio: e.target.value })} />
-                <input type="number" placeholder='Возраст' onChange={(e) => this.setState({ age: Number(e.target.value) })} />
-                <label htmlFor="isHappy">Счастлив?</label>
+                <input placeholder='Возраст' onChange={(e) => this.setState({ age: e.target.value })} />
+                <label htmlForm="isHappy">Счастлив?</label>
                 <input type="checkbox" id="isHappy" onChange={(e) => this.setState({ isHappy: e.target.checked })} />
-                <button type="submit">Добавить</button>
+                <button type="button" onClick={() => {
+                    this.myForm.reset()
+                    this.userAdd = {
+                        firstname: this.state.firstname,
+                        lastname: this.state.lastname,
+                        bio: this.state.bio,
+                        age: this.state.age,
+                        isHappy: this.state.isHappy,
+                    }
+                    if(this.props.user)
+                        this.userAdd.id = this.props.user.id
+                    this.props.onAdd(this.userAdd)
+                }
+                }>Добавить</button>
             </form>
-        );
+        )
     }
 }
 
-export default AddUser;
+export default AddUser

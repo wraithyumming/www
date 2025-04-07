@@ -24,7 +24,7 @@ class User extends React.Component {
                         <p>{this.user.bio}</p>
                         <b>{this.user.isHappy ? 'Счастлив!' : 'Не особо:('}</b>
 
-                        {this.state.editForm && <AddUser onAdd={this.props.onEdit}  />}
+                        {this.state.editForm && <AddUser user={this.user} onAdd={this.props.onEdit}  />}
                     </div>
                 )
             }
