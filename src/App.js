@@ -2,10 +2,18 @@ import React from 'react';
 import Header from './components/Header';
 import Users from './components/Users';
 import AddUser from './components/AddUser';
+import axios from 'axios';
+
+const baseUrl = "https://reqres.in/api/users?page=1"
 
 class App extends React.Component {
     constructor(props) {
         super(props);
+
+        axios.get(baseUrl).then((res) => {
+            this.setState({ users: res.data.data })
+        })
+
         this.state = {
             users: [
                 {
@@ -54,8 +62,8 @@ class App extends React.Component {
         let allUsers = this.state.users
         allUsers[user.id - 1] = user
 
-        this.setState({users: [] }, () => {
-            this.setState({users: [...allUsers] })
+        this.setState({ users: [] }, () => {
+            this.setState({ users: [...allUsers] })
         })
     }
 
